@@ -16,3 +16,7 @@ class Raindrops
     sound
   end
 end
+
+module BookKeeping
+  VERSION = 3
+end
