@@ -6,14 +6,21 @@ class Raindrops
   ]
 
   def self.convert(number)
-    sound = ''
-    SUBSTITUTIONS.each do |substiution|
-      sound << RaindropRule.new(substiution).convert(number)
+    if substituted_sounds(number).any?
+      substituted_sounds(number).join
+    else
+      default(number)
     end
-    if sound == ''
-      sound << number.to_s
+  end
+
+  def self.substituted_sounds(number)
+    SUBSTITUTIONS.map do |substitution|
+      RaindropRule.new(substitution).convert(number)
     end
-    sound
+  end
+
+  def self.default(number)
+    number.to_s
   end
 end
 
@@ -26,8 +33,6 @@ class RaindropRule
   def convert(number)
     if number % @factor == 0
       @sound
-    else
-      ''
     end
   end
 end
