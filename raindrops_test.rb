@@ -32,7 +32,6 @@ class RaindropsTest < Minitest::Test
   end
 
   def test_2_to_the_power_3_does_not_make_a_raindrop_sound_as_3_is_the_exponent_not_the_base
-    skip
     assert_equal "8", Raindrops.convert(8)
   end
 
@@ -82,7 +81,6 @@ class RaindropsTest < Minitest::Test
   end
 
   def test_the_sound_for_52_is_52
-    skip
     assert_equal "52", Raindrops.convert(52)
   end
 

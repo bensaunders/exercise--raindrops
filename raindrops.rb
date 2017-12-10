@@ -1,5 +1,5 @@
 class Raindrops
-  def self.convert(_)
-    '1'
+  def self.convert(number)
+    number.to_s
   end
 end
