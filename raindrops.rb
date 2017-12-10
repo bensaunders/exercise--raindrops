@@ -1,9 +1,15 @@
 class Raindrops
+  SUBSTITUTIONS = [
+    {factor: 3, sound: 'Pling'},
+    {factor: 5, sound: 'Plang'},
+    {factor: 7, sound: 'Plong'}
+  ]
+
   def self.convert(number)
     sound = ''
-    sound << RaindropRule.new(3, 'Pling').convert(number)
-    sound << RaindropRule.new(5, 'Plang').convert(number)
-    sound << RaindropRule.new(7, 'Plong').convert(number)
+    SUBSTITUTIONS.each do |substiution|
+      sound << RaindropRule.new(substiution).convert(number)
+    end
     if sound == ''
       sound << number.to_s
     end
@@ -12,7 +18,7 @@ class Raindrops
 end
 
 class RaindropRule
-  def initialize(factor, sound)
+  def initialize(factor: nil, sound: nil)
     @factor = factor
     @sound = sound
   end
