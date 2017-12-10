@@ -1,9 +1,9 @@
 class Raindrops
   SUBSTITUTIONS = [
-    {factor: 3, sound: 'Pling'},
-    {factor: 5, sound: 'Plang'},
-    {factor: 7, sound: 'Plong'}
-  ]
+    { factor: 3, sound: 'Pling' },
+    { factor: 5, sound: 'Plang' },
+    { factor: 7, sound: 'Plong' }
+  ].freeze
 
   def self.rules
     SUBSTITUTIONS.map do |substitution|
@@ -27,17 +27,11 @@ class RaindropNumber
   end
 
   def substituted_sounds
-    @rules.map do |rule|
-      rule.convert(@number)
-    end
+    @rules.map { |rule| rule.convert(@number) }
   end
 
   def convert
-    if substituted_sounds.any?
-      substituted_sounds.join
-    else
-      default
-    end
+    substituted_sounds.any? ? substituted_sounds.join : default
   end
 end
 
@@ -48,9 +42,7 @@ class RaindropRule
   end
 
   def convert(number)
-    if number % @factor == 0
-      @sound
-    end
+    @sound if (number % @factor).zero?
   end
 end
 
