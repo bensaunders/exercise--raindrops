@@ -5,22 +5,39 @@ class Raindrops
     {factor: 7, sound: 'Plong'}
   ]
 
-  def self.convert(number)
-    if substituted_sounds(number).any?
-      substituted_sounds(number).join
-    else
-      default(number)
-    end
-  end
-
-  def self.substituted_sounds(number)
+  def self.rules
     SUBSTITUTIONS.map do |substitution|
-      RaindropRule.new(substitution).convert(number)
+      RaindropRule.new(substitution)
     end
   end
 
-  def self.default(number)
-    number.to_s
+  def self.convert(number)
+    RaindropNumber.new(rules, number).convert
+  end
+end
+
+class RaindropNumber
+  def initialize(rules, number)
+    @rules = rules
+    @number = number
+  end
+
+  def default
+    @number.to_s
+  end
+
+  def substituted_sounds
+    @rules.map do |rule|
+      rule.convert(@number)
+    end
+  end
+
+  def convert
+    if substituted_sounds.any?
+      substituted_sounds.join
+    else
+      default
+    end
   end
 end
 
