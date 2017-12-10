@@ -7,7 +7,6 @@ require_relative 'raindrops'
 # Common test data version: 1.0.0 9db5371
 class RaindropsTest < Minitest::Test
   def test_the_sound_for_1_is_1
-    # skip
     assert_equal "1", Raindrops.convert(1)
   end
 
@@ -44,12 +43,10 @@ class RaindropsTest < Minitest::Test
   end
 
   def test_the_sound_for_15_is_plingplang_as_it_has_factors_3_and_5
-    skip
     assert_equal "PlingPlang", Raindrops.convert(15)
   end
 
   def test_the_sound_for_21_is_plingplong_as_it_has_factors_3_and_7
-    skip
     assert_equal "PlingPlong", Raindrops.convert(21)
   end
 
@@ -62,7 +59,6 @@ class RaindropsTest < Minitest::Test
   end
 
   def test_the_sound_for_35_is_plangplong_as_it_has_factors_5_and_7
-    skip
     assert_equal "PlangPlong", Raindrops.convert(35)
   end
 
@@ -75,7 +71,6 @@ class RaindropsTest < Minitest::Test
   end
 
   def test_the_sound_for_105_is_plingplangplong_as_it_has_factors_3_5_and_7
-    skip
     assert_equal "PlingPlangPlong", Raindrops.convert(105)
   end
 
